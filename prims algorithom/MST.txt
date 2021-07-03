@@ -1,0 +1,107 @@
+public class algo
+
+{
+
+    public static void main(String args[])
+
+    {
+
+        int graph[][]=new int[][] {{0,73,67,61,58,0},{73,0,0,0,78,49},{67,0,0,50,67,0},
+
+                {61,0,50,0,0,54},{58,78,67,0,0,0},{0,0,0,54,0,49}};
+
+
+        int visited[]=new int[7];
+
+        int min=999;
+        int u=0;
+        int v=0;
+        int sum=0;
+
+
+
+        for(int i=0;i<7;i++)
+
+        {
+
+            visited[i]=0;
+
+            for(int j=0;j<5;j++)
+
+            {
+
+                if(graph[i][j]==0)
+
+                {
+
+                    graph[i][j]=999;
+
+                }
+
+            }
+
+        }
+
+        visited[0]=1;
+
+
+
+        for(int count=0;count<6;count++)
+
+        {
+
+            min=999;
+
+            for(int i=0;i<5;i++)
+
+            {
+
+                if(visited[i]==1)
+
+                {
+
+                    for(int j=0;j<5;j++)
+
+                    {
+
+                        if(visited[j]==0)
+
+                        {
+
+                            if(min>graph[i][j])
+
+                            {
+
+                                min=graph[i][j];
+
+                                u=i;
+
+                                v=j;
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+
+
+
+
+            visited[v]=1;
+
+            sum=sum+min;
+
+            System.out.println("MST IS    "+u+"........"+v+":"+min);
+
+        }
+
+        System.out.println("sum of the weight of the edges"+sum);
+
+    }
+
+}
